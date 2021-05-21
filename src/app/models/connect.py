@@ -1,7 +1,9 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from flask_mongoengine import MongoEngine
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:P@ssw0rd@localhost/pydev'
-db = SQLAlchemy(app)
+app.config['MONGODB_SETTINGS'] = {
+    'host': 'mongodb://admin:password@localhost:27017/letterboxdb?authSource=admin'
+}
+db = MongoEngine()
 db.init_app(app)

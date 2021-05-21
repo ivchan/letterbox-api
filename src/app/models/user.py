@@ -1,17 +1,20 @@
-from datetime import datetime
-
+import datetime
+from flask_mongoengine import MongoEngine
 from app.models.connect import db
 
 
-class User(db.Model):
-    __tablename__ = "users"
-    id = db.Column(db.String(36), primary_key=True)
-    name = db.Column(db.String(100))
-    create_time = db.Column(db.DateTime, default=datetime.now())
-    last_update_time = db.Column(db.DateTime, onupdate=datetime.now(), default=datetime.now())
-    status = db.Column(db.String(10), nullable=False)
+class User(db.Document):
+    name = db.StringField()
+    email = db.StringField()
+    status = db.StringField()
+    user_role = db.StringField()
+    login_id = db.StringField()
 
-    def __init__(self):
-        self.id = ""
-        self.name = ""
-        self.status = ""
+    def to_json(self):
+        return {
+            "name": self.name,
+            "email": self.email,
+            "status": self.status,
+            "user_role": self.user_role,
+            "login_id": self.login_id
+        }
