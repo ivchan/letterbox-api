@@ -1,4 +1,3 @@
-import uuid
 from flask import Flask
 from app.models.connect import db
 from app.models.user import User
@@ -15,5 +14,5 @@ if __name__ == '__main__':
     # u.status = "active"
     # db.session.add(u)
     # db.session.commit()
-    #exit()
+    # exit()
     app.run(host='0.0.0.0', port=5000)
