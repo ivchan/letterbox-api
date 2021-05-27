@@ -1,3 +1,5 @@
 venv
 out
 src/.pytest_cache
+src/app/__pycache__
+src/app/models/__pycache__/
